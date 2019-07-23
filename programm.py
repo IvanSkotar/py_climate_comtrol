@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 def print_menu():
     print('\nMain Menu\n'
           '---------\n'
@@ -20,3 +22,14 @@ def convert_units(celsius_value, units):
         return celsius_value * 1.8 + 32
     if units == 2:
         return celsius_value + 273.15
+
+sensors = {
+    "4213": ("STEM Center", 0),
+    "4201": ("Foundations Lab", 1),
+    "4204": ("CS Lab", 2),
+    "4218": ("Workshop Room", 3),
+    "4205": ("Tiled Room", 4),
+    "Out": ("Outside", 5),
+}
+
+sortedSensors = OrderedDict(sorted(sensors.items(), key=lambda x: x[0]))
