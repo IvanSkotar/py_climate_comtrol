@@ -12,3 +12,11 @@ def print_menu():
           '')
 
 print_menu()
+
+def convert_units(celsius_value, units):
+    if units == 0:
+        return celsius_value
+    if units == 1:
+        return celsius_value * 1.8 + 32
+    if units == 2:
+        return celsius_value + 273.15
