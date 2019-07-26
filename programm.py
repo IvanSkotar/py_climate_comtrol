@@ -33,3 +33,17 @@ sensors = {
 }
 
 sortedSensors = OrderedDict(sorted(sensors.items(), key=lambda x: x[0]))
+
+filter_list = []
+
+
+def print_filter(filter_list):
+    print('\nEdit room filter\n'
+          '----------------')
+    for a, b in sortedSensors.items():
+        if b[1] in filter_list:
+            print(a + ":", b[0])
+        else:
+            print(a + ':', b[0], '[ACTIVE]')
+    print('\nType "x" to return to Main Menu \n'
+          'OR')
