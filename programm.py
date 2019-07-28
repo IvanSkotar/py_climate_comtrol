@@ -47,3 +47,50 @@ def print_filter(filter_list):
             print(a + ':', b[0], '[ACTIVE]')
     print('\nType "x" to return to Main Menu \n'
           'OR')
+
+def change_filter(sortedSensors, filter_list):
+    print_filter(filter_list)
+
+    option = input('Type the room number to deactivate sensor: ')
+    if option == 'x':
+        programm()
+    elif option in sortedSensors:
+        for a, b in sortedSensors.items():
+            if option == a:
+                if b[1] in filter_list:
+                    filter_list.remove(b[1])
+                else:
+                    filter_list.append(b[1])
+        change_filter(sortedSensors, filter_list)
+    else:
+        print('Invalid Sensor\n')
+        change_filter(sortedSensors, filter_list)
+
+def programm():
+    print_menu()
+    option = input('What is your choice? ')
+    try:
+        option = int(option)
+        if option < 0 or option > 7:
+            print('\nInvalid Choice\n')
+            programm()
+        else:
+            if option == 7:
+                print('\nThank you for using the STEM Center Temperature Project\n')
+            elif option == 0:
+                celsius_t = input('\nPlease enter a temperature in °C: ')
+                fahrenheit_t = convert_units(float(celsius_t), 1)
+                kelvin_t = convert_units(float(celsius_t), 2)
+                print('\nThat\'s', fahrenheit_t, '°F and', kelvin_t, '°K')
+                programm()
+            elif option == 3:
+                change_filter(sortedSensors, filter_list)
+            else:
+                print('\nOption 1 selected\n')
+                programm()
+    except:
+        print('\n*** Please enter an integer only ***\n')
+        programm()
+
+
+programm()
