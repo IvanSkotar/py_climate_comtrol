@@ -116,7 +116,6 @@ def programm():
         programm()
 
 print('STEM Center Temperature Project\n'
-      'Iullia Skotar\n'
       '')
 
 def new_file():
